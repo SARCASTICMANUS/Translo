@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafaf8;
+  --foreground: #101613;
+  --brand: #009849;
+  --brand-strong: #007c3b;
+  --brand-soft: #e7f6ee;
+  --ink-muted: #5b665f;
+  --line: #e6e9e4;
+  --card: #ffffff;
+  --danger: #d92d20;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-card: var(--card);
+  --color-danger: var(--danger);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --animate-pulse-ring: pulse-ring 1.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  --animate-fade-up: fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-breathe: breathe 2.4s ease-in-out infinite;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 152, 73, 0.35);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(0, 152, 73, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 152, 73, 0);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/* Live dot in the header */
+.live-dot {
+  animation: breathe 2s ease-in-out infinite;
+}
+
+/* Speaking bars — height driven imperatively via --level (0..1) */
+.speaking-bar {
+  transition: transform 90ms ease-out;
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* Transcript scrollbar */
+.thin-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: #d5dbd3;
+  border-radius: 999px;
+}
+.thin-scroll::-webkit-scrollbar-track {
+  background: transparent;
 }
