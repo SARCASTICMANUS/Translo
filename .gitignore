@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# TransloMobile is its own separate git repo (Expo app with build junk)
+TransloMobile/
+
+# scratch / debug files
+tmp_errors.txt
+dev-log.txt
+metro.log

@@ -11,3 +11,7 @@ export function formatTime(tsMs: number): string {
     minute: "2-digit",
   });
 }
+
+export function formatClock(tsMs: number): string {
+  return formatTime(tsMs);
+}
